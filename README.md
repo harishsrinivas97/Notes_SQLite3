@@ -1,35 +1,80 @@
-# Notes Management System (SQLite3)
+Notes Management System (SQLite3)
+A web-based Notes Management System built using Python Flask and SQLite3. It allows users to register, log in, and manage their personal notes. The application also includes email-based password reset functionality and a contact form.
+Features
+- User registration and login
+- Create, view, edit, and delete personal notes
+- Dashboard to manage notes
+- Password reset through email
+- Contact form with email notifications
+- SQLite database for storing users and notes
+- Environment configuration using .env
+- Git security using .gitignore
+Technologies Used
+- Python
+- Flask
+- SQLite3
+- HTML and CSS
+- Flask-Mail
+- itsdangerous
+- python-dotenv
+Installation and Setup
+1. Clone the repository
+git clone <your-repository-url>
+cd Notes_SQLite3
 
-## Setup
 
-1. Install dependencies:
-   ```bash
-   pip install -r requirements.txt
-   ```
-2. Copy `.env.example` to `.env` (Windows PowerShell: `Copy-Item .env.example .env`) and set your own values.
-3. Initialize the local SQLite database:
-   ```bash
-   python init_db.py
-   ```
-4. Start the application:
-   ```bash
-   python app.py
-   ```
+2. Create and activate a virtual environment
+python -m venv myvenv
+.\myvenv\Scripts\Activate.ps1
 
-## Environment variables
 
-- `SECRET_KEY`: Flask session and password-reset token signing key. Replace the example with a long random value.
-- `MAIL_USERNAME` and `MAIL_PASSWORD`: Gmail address and Google App Password used by Flask-Mail.
-- `CONTACT_EMAIL`: destination for contact-form messages.
-- `FLASK_DEBUG`: set to `true` only for local development; keep `false` in production.
-- `MYSQL_*`: used only by the optional MySQL-to-SQLite migration script.
+3. Install dependencies
+pip install -r requirements.txt
 
-## Git and secrets
 
-`.gitignore` excludes `.env`, local database files, Python cache files, virtual environments, and IDE files. Commit `.env.example`, not `.env`. Never commit passwords, app passwords, secret keys, or database files.
+4. Configure environment variables
 
-If credentials were previously committed or shared, rotate them (especially the Gmail App Password) and replace them in your local `.env`.
+Copy .env.example to .env using PowerShell:
+Copy-Item .env.example .env
 
-## Optional MySQL migration
 
-Set the `MYSQL_*` values in `.env`, run `python init_db.py`, then run `python migrate_mysql_to_sqlite.py` once. The migration refuses to run if the SQLite tables already contain data. Back up your MySQL database before migration and verify the result before removing the backup.
+Update .env with your own secret key and email credentials.
+
+5. Initialize the database
+python init_db.py
+
+
+6. Run the application
+python app.py
+
+
+Open http://127.0.0.1:5000 in your browser.
+Environment Variables
+- SECRET_KEY – Flask session and password-reset token security.
+- FLASK_DEBUG – Enables debug mode during development.
+- MAIL_USERNAME – Gmail address used to send emails.
+- MAIL_PASSWORD – Google App Password for email functionality.
+- CONTACT_EMAIL – Email address that receives contact form messages.
+- MYSQL_* – MySQL configuration used only for optional database migration.
+Git and Security
+The .gitignore file excludes .env, virtual environments, Python cache files, and local database files.
+
+Never commit passwords, secret keys, email credentials, or .env to GitHub. Commit .env.example instead. If credentials have been exposed, revoke or change them.
+Optional MySQL Migration
+To migrate data from MySQL to SQLite:
+1. Configure the MYSQL_* variables in .env.
+2. Back up your MySQL database.
+3. Follow the migration script's database initialization requirements.
+4. Run:
+python migrate_mysql_to_sqlite.py
+
+
+Verify the migrated data before removing any backups.
+Future Improvements
+- Secure password hashing
+- Search and sorting for notes
+- Improved form validation
+- Automated testing
+- Production deployment
+License
+Add a license file if you intend to distribute this project publicly.
