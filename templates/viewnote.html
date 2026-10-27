@@ -1,0 +1,30 @@
+
+{% extends "base.html" %}
+
+{% block title %}View Note{% endblock %}
+
+{% block content %}
+
+<div class="form-page-container">
+    <div class="note-detail-card">
+        <div class="note-detail-header">
+            <h2 class="note-detail-title">{{ note['titel'] }}</h2>
+        </div>
+
+        <div class="note-detail-body">
+            <p class="note-detail-content">{{ note['content'] }}</p>
+        </div>
+
+        <div class="note-detail-meta">
+            <p><strong>Note ID:</strong> {{ note['nid'] }}</p>
+            <p><strong>Created At:</strong> {{ note['created_at'] }}</p>
+        </div>
+
+        <div class="note-detail-actions">
+            <a href="{{ url_for('Editnote', nid=note['nid']) }}" class="btn btn-primary">Edit Note</a>
+            <a href="{{ url_for('Dashboard') }}" class="btn btn-outline">Back to Dashboard</a>
+        </div>
+    </div>
+</div>
+
+{% endblock %}

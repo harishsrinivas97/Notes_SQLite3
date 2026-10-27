@@ -1,0 +1,47 @@
+
+{% extends "base.html" %}
+
+{% block title %}All Notes{% endblock %}
+
+{% block content %}
+
+<div class="page-header">
+    <h2 class="page-title">All My Notes</h2>
+    <a href="{{ url_for('Addnote') }}" class="btn btn-primary">+ Add New Note</a>
+</div>
+
+<div class="table-container">
+    <table class="data-table">
+        <thead>
+            <tr>
+                <th>ID</th>
+                <th>Title</th>
+                <th>Content</th>
+                <th>Created At</th>
+                <th>User ID</th>
+            </tr>
+        </thead>
+
+        <tbody>
+            {% for note in notes %}
+            <tr>
+                <td data-label="ID">{{ note['nid'] }}</td>
+                <td data-label="Title">{{ note['titel'] }}</td>
+                <td data-label="Content" class="table-content-cell">{{ note['content'] }}</td>
+                <td data-label="Created At">{{ note['created_at'] }}</td>
+                <td data-label="User ID">{{ note['user_id'] }}</td>
+            </tr>
+            {% else %}
+            <tr>
+                <td colspan="5" class="table-empty">No notes found.</td>
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+</div>
+
+<div class="text-center" style="margin-top: 2rem;">
+    <a href="{{ url_for('Dashboard') }}" class="btn btn-outline">← Back to Dashboard</a>
+</div>
+
+{% endblock %}

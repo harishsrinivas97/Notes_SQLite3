@@ -1,0 +1,61 @@
+{% extends "base.html" %}
+
+{% block title %}Contact Us - Notes Management System{% endblock %}
+
+{% block content %}
+
+<section class="page-hero">
+    <h2 class="page-hero-title">Contact Us</h2>
+    <p class="page-hero-subtitle">
+        Have questions, suggestions, or need assistance with the
+        Notes Management System? Send us a message below.
+    </p>
+</section>
+
+<div class="form-page-container">
+    <div class="form-card">
+        <form action="{{ url_for('Contacts') }}" method="POST" class="note-form">
+
+            <div class="form-group">
+                <label for="name" class="form-label">Your Name</label>
+                <input type="text"
+                       id="name"
+                       name="name"
+                       placeholder="Enter your name"
+                       required class="form-input">
+            </div>
+
+            <div class="form-group">
+                <label for="email" class="form-label">Email Address</label>
+                <input type="email"
+                       id="email"
+                       name="email"
+                       placeholder="Enter your email"
+                       required class="form-input">
+            </div>
+
+            <div class="form-group">
+                <label for="subject" class="form-label">Subject</label>
+                <input type="text"
+                       id="subject"
+                       name="subject"
+                       placeholder="Enter the subject"
+                       required class="form-input">
+            </div>
+
+            <div class="form-group">
+                <label for="message" class="form-label">Message</label>
+                <textarea id="message"
+                          name="message"
+                          rows="5"
+                          placeholder="Write your message here"
+                          required class="form-textarea"></textarea>
+            </div>
+
+            <button type="submit" class="btn btn-primary btn-full">Send Message</button>
+
+        </form>
+    </div>
+</div>
+
+{% endblock %}

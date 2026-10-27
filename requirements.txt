@@ -1,0 +1,6 @@
+Flask
+Flask-Mail
+itsdangerous
+# Required only to migrate existing MySQL records:
+mysql-connector-python
+python-dotenv

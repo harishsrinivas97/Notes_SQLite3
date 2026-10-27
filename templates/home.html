@@ -1,0 +1,53 @@
+{% extends "base.html" %}
+
+{% block title %}Home - Notes Management System{% endblock %}
+
+{% block content %}
+
+<section class="hero">
+    <div class="hero-content">
+        <h1 class="hero-title">Manage Your Notes <span class="text-gradient">Effortlessly</span></h1>
+
+        <p class="hero-subtitle">
+            Organize your thoughts, save important information, and
+            manage your personal notes in one place. Create, view,
+            update, and delete your notes securely whenever you need.
+        </p>
+
+        <div class="hero-actions">
+            {% if not session.get('logged_in') %}
+                <a href="{{ url_for('Register') }}" class="btn btn-primary">Get Started Free</a>
+                <a href="{{ url_for('Login') }}" class="btn btn-outline">Sign In</a>
+            {% else %}
+                <a href="{{ url_for('Addnote') }}" class="btn btn-primary">Create Note</a>
+                <a href="{{ url_for('Viewall') }}" class="btn btn-outline">View My Notes</a>
+            {% endif %}
+        </div>
+    </div>
+</section>
+
+<section class="features-section">
+    <h2 class="section-title">Features of Notes Management System</h2>
+
+    <div class="features-grid">
+        <div class="feature-card">
+            <div class="feature-icon">📝</div>
+            <h3 class="feature-title">Create Notes</h3>
+            <p class="feature-desc">Create notes with titles and content to save your ideas.</p>
+        </div>
+
+        <div class="feature-card">
+            <div class="feature-icon">🔒</div>
+            <h3 class="feature-title">Private and Secure</h3>
+            <p class="feature-desc">Keep your notes private using authentication and sessions.</p>
+        </div>
+
+        <div class="feature-card">
+            <div class="feature-icon">⚙️</div>
+            <h3 class="feature-title">Manage Your Notes</h3>
+            <p class="feature-desc">View, update, and delete your saved notes.</p>
+        </div>
+    </div>
+</section>
+
+{% endblock %}
